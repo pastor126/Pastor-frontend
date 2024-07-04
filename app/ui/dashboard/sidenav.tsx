@@ -6,12 +6,12 @@ import Image from 'next/image';
 
 export default function SideNav() {
   return (
-    <div className="flex h-full flex-col px-3 py-4 md:px-2">
+    <div className="flex h-full flex-col px-3 py-4 md:px-5">
       <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
+        className="mb-2 flex h-20 items-end justify-center rounded-md bg-blue-600 p-4 md:h-40"
         href="/"
       >
-        <div className="ml-5 flex items-center justify-center w-32 text-white md:w-40">
+        <div className="flex items-center justify-center w-32 text-white md:w-40">
         {/* <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12"> */}
         <Image
         src="/PSarLogo.png"

@@ -3,7 +3,7 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
-} from '@heroicons/react/24/outline';
+} from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -12,11 +12,7 @@ import clsx from 'clsx';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Home', href: '/autenticado', icon: HomeIcon },
-  {
-    name: 'Pastores',
-    href: '/autenticado/pastores',
-    icon: UserGroupIcon,
-  },
+  { name: 'Pastores',  href: '/autenticado/pastores', icon: UserGroupIcon, },
   { name: 'pastoresHonorarios', href: '/autenticado/pastoresHonorarios', icon: DocumentDuplicateIcon },
 ];
 
