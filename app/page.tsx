@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import {
   UserGroupIcon,
   HomeIcon,
@@ -26,6 +27,24 @@ export default function NavLinks() {
 
   return (
     <>
+ <div className=" pl-40 justify-center w-90">
+      <Image
+        src="/PSarLogo.png"
+        width={100}
+        height={76}
+        className="hidden md:block"
+        alt="Imagem para desktop version"
+      />
+      <Image
+        src="/PSarLogo.png"
+        width={560}
+        height={620}
+        className="block md:hidden"
+        alt="Imagem para mobile version"
+      />
+      
+    </div>
+
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
