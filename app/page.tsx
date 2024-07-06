@@ -50,7 +50,7 @@ export default function Page() {
               },
             )}          >
             <LinkIcon className="w-10" />
-            <p className="hidden md:block">Faça seu Login</p>
+            <p className="hidden md:block">Faça seu Login!</p>
           </Link>
         );
       })}
