@@ -6,7 +6,6 @@ settings:
 
 importers:
 
-  .:
     dependencies:
       '@heroicons/react':
         specifier: ^2.1.4
