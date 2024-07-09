@@ -4,13 +4,19 @@ import { TagIcon,} from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { useEffect } from 'react';
 
 const links = [
   { name: 'Home', href: '/login', icon: TagIcon },
   
 ];
 
+
 export default function Page() {
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+  
 
   const pathname = usePathname();
 
