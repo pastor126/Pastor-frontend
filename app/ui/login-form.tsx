@@ -37,7 +37,7 @@ export default function LoginForm() {
     }
   };
   const links = [
-    { name: 'Svc', href: '/novoUsuario'},
+    { name: 'Svc', href: '/inserirNovoUsuario'},
     
   ];
   const pathname = usePathname();
