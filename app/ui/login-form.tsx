@@ -3,11 +3,8 @@ import { AtSymbolIcon, KeyIcon, ExclamationCircleIcon } from '@heroicons/react/2
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import { LoginService } from '@/service/LoginService';
-//Para uso do link
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import clsx from 'clsx';
+
 
 const loginService = new LoginService();
 
@@ -36,12 +33,7 @@ export default function LoginForm() {
       console.error('Erro no login', error);
     }
   };
-  const links = [
-    { name: 'Svc', href: '/inserirNovoUsuario'},
-    
-  ];
-  const pathname = usePathname();
-  
+
   
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
@@ -89,22 +81,8 @@ export default function LoginForm() {
           </div>
 
           <div className="flex h-8  space-x-1text-blue-500 hover:underline">
-        
-            {links.map((link) => {
-          return(
-         <Link
-            key={link.name}
-            href={link.href}
-            className={clsx(
-              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-900 md:flex-none md:justify-start md:p-2 md:px-3',
-              {
-               'bg-emerald-100 text-blue-600' : pathname === link.href,
-              },
-            )}          >
-            <p className="hidden md:block">Faça seu cadastro</p>
-          </Link>
-            );
-          })}
+          <a href="/novoUsuario">Faça seu cadastro</a>
+      
         </div>
         </div>
 

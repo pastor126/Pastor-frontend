@@ -12,7 +12,7 @@ import clsx from 'clsx';
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Home', href: '/autenticado', icon: HomeIcon },
-  { name: 'Pastores',  href: '/autenticado/pastores', icon: UserGroupIcon, },
+  { name: 'Pastores',  href: '/pastores', icon: UserGroupIcon, },
   { name: 'pastoresHonorarios', href: '/autenticado/pastoresHonorarios', icon: DocumentDuplicateIcon },
 ];
 
