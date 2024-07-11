@@ -8,13 +8,13 @@ export default function Page() {
 
   return (
     <>
-<main className="grid grid-flow-row auto-rows-auto flex items-center justify-center mt-6 p-10 bg-emerald-100">
+<main className="grid grid-flow-row  flex  h-screen items-center justify-center p-20 bg-emerald-100">
 
-  <div className= "flex items-center justify-center p-1 md:w-50 ">
+  <div className= "flex items-center justify-center md:w-50 ">
       <Image
         src="/PSarLogo.png"
-        width={100}
-        height={76}
+        width={150}
+        height={114}
         className="hidden md:block"
         alt="Imagem para desktop version"
       />
@@ -27,8 +27,11 @@ export default function Page() {
       />
       
     </div>
-<div className= "flex items-center justify-center mb-20 md:w-50">
-      <h1>Verifique seu email para validar sua conta.</h1>
+<div className= "flex items-center justify-center">
+      <h1 className="text-2xl h-6">Verifique seu email para validar sua conta.</h1>
+      </div>
+      <div className= "flex items-center justify-center h-4 ">
+      <a className= "hover:text-blue-900" href="/">Ir para a página principal</a>
       </div>
      </main>
       

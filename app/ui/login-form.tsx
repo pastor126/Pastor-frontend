@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { AtSymbolIcon, KeyIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
+import { KeyIcon, } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
 import { LoginService } from '@/service/LoginService';
 import { useRouter } from 'next/navigation';
+import { UserIcon } from '@heroicons/react/24/solid';
 
 
 const loginService = new LoginService();
@@ -57,7 +58,7 @@ export default function LoginForm() {
                 value={login}
                 onChange={(e) => setLogin(e.target.value)}
               />
-              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div className="mt-4">
@@ -80,8 +81,8 @@ export default function LoginForm() {
             </div>
           </div>
 
-          <div className="flex h-8  space-x-1text-blue-500 hover:underline">
-          <a href="/novoUsuario">Faça seu cadastro</a>
+          <div className="flex h-8 pt-2 hover:underline hover:text-blue-900">
+          <a className="text-cyan-900" href="/novoUsuario">Faça seu cadastro</a>
       
         </div>
         </div>
@@ -92,8 +93,8 @@ export default function LoginForm() {
           </div>
         )}
 
-        <Button className="mt-4 w-full" type="submit">
-          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        <Button className="mt-4 w-full text-xl flex justify-center" type="submit">
+          Log in 
         </Button>
       </div>
     </form>

@@ -44,14 +44,14 @@ export default function InserirUsuarioForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+      <div className="flex-1 border-2 border-black rounded-lg bg-gray-50 px-6 pt-2">
         <h1 className="mb-3 text-2xl font-medium">
           Insira os dados para novo usuário.
         </h1>
 
         <div className="w-full">
           <div>
-            <label className="mb-1 mt-4 block text-lg text-gray-700" htmlFor="nome">
+            <label className="mt-2 block text-lg text-gray-700" htmlFor="nome">
               Nome
             </label>
             <div className="relative">
@@ -65,10 +65,11 @@ export default function InserirUsuarioForm() {
                 value={usuario.nome}
                 onChange={handleChange}
               />
+              <ExclamationCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div>
-            <label className="mb-1 mt-4 block text-lg text-gray-700" htmlFor="login">
+            <label className="mt-2 block text-lg text-gray-700" htmlFor="login">
               Login
             </label>
             <div className="relative">
@@ -82,10 +83,11 @@ export default function InserirUsuarioForm() {
                 value={usuario.login}
                 onChange={handleChange}
               />
+                <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div>
-            <label className="mb-1 mt-4 block text-lg text-gray-700" htmlFor="email">
+            <label className="mt-2 block text-lg text-gray-700" htmlFor="email">
               Email
             </label>
             <div className="relative">
@@ -99,10 +101,11 @@ export default function InserirUsuarioForm() {
                 value={usuario.email}
                 onChange={handleChange}
               />
+                <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
-          <div className="mt-4">
-            <label className="mb-1 mt-3 block text-lg text-gray-700" htmlFor="senha">
+          <div>
+            <label className="mt-2 block text-lg text-gray-700" htmlFor="senha">
               Password
             </label>
             <div className="relative">
@@ -127,14 +130,16 @@ export default function InserirUsuarioForm() {
             {error}
           </div>
         )}
-
-        <Button className="mt-4 mb-1 w-30" type="submit">
-          Salvar <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+<div className="flex w-full ">
+   <Button className="mt-2 mb-1 ml-20 px-6 text-x" type="submit">
+          Salvar
         </Button>
         
-            <a className=" text-x border-2 border-black p-1" href='/'>
+            <a className=" text-m font-medium text-white transition-colors hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 active:bg-red-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 border-2 rounded-md  border-black ml-10 bg-red-500 mt-2 mb-1 px-2 flex items-center w-30" href='/'>
           Cancelar 
         </a> 
+</div>
+       
         
       </div>
     </form>
