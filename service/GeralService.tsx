@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Configurar a instância do Axios com uma URL base
 export const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL_API
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL_API || 'https://pastor-frontend-production.up.railway.app/'
   
 
 })
