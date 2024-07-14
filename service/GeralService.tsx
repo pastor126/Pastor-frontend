@@ -20,6 +20,7 @@ export class GeralService {
             config.headers['Authorization'] = authRequestToken;
             return config;
         }, (error) => Promise.reject(error));
+        
 
         // Trata respostas e erros de autenticação
         axiosInstance.interceptors.response.use((response) => {
