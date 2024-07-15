@@ -1,9 +1,9 @@
 'use client';
-
 import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import React, { useEffect, useState, useMemo } from 'react';
 import { PastorService } from '@/service/PastorService';
+import { GeralService } from '@/service/GeralService';
 
 interface Pastor {
   id: number;
@@ -13,9 +13,9 @@ interface Pastor {
 
 const PastorComponent: React.FC = () => {
   const pastorVazio: Pastor = {
-      id: 0,
-      numero: '',
-      nome: '',
+    id: 0,
+    numero: '',
+    nome: '',
   };
 
   const [pastors, setPastors] = useState<Pastor[] | null>(null);
@@ -26,17 +26,25 @@ const PastorComponent: React.FC = () => {
   const pastorService = useMemo(() => new PastorService(), []);
 
   useEffect(() => {
-    if(!pastors){
+    const localStorageToken = localStorage.getItem('authToken');
+    if (localStorageToken) {
+      GeralService.setToken(localStorageToken); // Define o token na classe GeralService
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!pastors) {
       pastorService.listarTodos()
-          .then((response) => {
-              console.log('Resposta completa da API:', response);
-              console.log('Dados da API:', response.data);          
-                  setPastors(response.data);
-                  console.log('Pastores definidos:', response.data);
-          }).catch((error) => {
-              console.error('Erro ao listar Pastores:', error);
-          });
-  }}, [pastorService, pastors]);
+        .then((response) => {
+          console.log('Resposta completa da API:', response);
+          console.log('Dados da API:', response.data);
+          setPastors(response.data);
+          console.log('Pastores definidos:', response.data);
+        }).catch((error) => {
+          console.error('Erro ao listar Pastores:', error);
+        });
+    }
+  }, [pastorService, pastors]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-50">
@@ -71,22 +79,6 @@ const PastorComponent: React.FC = () => {
           <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-10 pr-10 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
-                {/* <th>
-                  <input className='ml-3 mr-3'
-                    type="checkbox"
-                    onChange={(e) => {
-                      const checked = e.target.checked;
-                      if (checked) {
-                        if(pastors != null){
-                          setSelectedPastors(pastors);
-                        }
-                       
-                      } else {
-                        setSelectedPastors([]);
-                      }
-                    }}
-                  />
-                </th> */}
                 <th className="rounded-md border border-black pl-2 pr-2">Número</th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">Nome</th>
               </tr>
@@ -99,20 +91,6 @@ const PastorComponent: React.FC = () => {
                   )
                   .map((pastor) => (
                     <tr key={pastor.id}>
-                      {/* <td>
-                        <input
-                          type="checkbox"
-                          checked={selectedPastors.includes(pastor)}
-                          onChange={(e) => {
-                            const checked = e.target.checked;
-                            setSelectedPastors((prevSelected) =>
-                              checked
-                                ? [...prevSelected, pastor]
-                                : prevSelected.filter((u) => u.id !== pastor.id)
-                            );
-                          }}
-                        />
-                      </td> */}
                       <td>{pastor.numero}</td>
                       <td>{pastor.nome}</td>
                     </tr>

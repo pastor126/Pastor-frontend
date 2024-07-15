@@ -1,5 +1,5 @@
-'use client';
-import  GeralService  from "./GeralService";
+
+import  {GeralService}  from "./GeralService";
 
 
 
