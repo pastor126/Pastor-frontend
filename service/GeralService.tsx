@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react'; // Import React and hooks
 import axiosInstance from "axios";
 
+
+const MyComponent = () => {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem('authToken');
+    setToken(localStorageToken || '');
+  }, []);}
 class GeralService {
+  
   private readonly baseUrl: string;
-  private token: string;
+ 
+  
 
   constructor(endpoint: string) {
     this.baseUrl = `https://galeria-dos-pastores-production.up.railway.app${endpoint}`;
-    this.token = ''; // Initialize token as empty string
+    
   }
 
-  private setToken(token: string) {
-    this.token = token;
-  }
+
 
   listarTodos(): Promise<any> {
     return axiosInstance.get(this.baseUrl, {
       headers: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${MyComponent}`,
       },
     });
   }
@@ -25,7 +33,7 @@ class GeralService {
   buscarPorId(id: number): Promise<any> {
     return axiosInstance.get(`${this.baseUrl}/${id}`, {
       headers: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${MyComponent}`,
       },
     });
   }
@@ -33,7 +41,7 @@ class GeralService {
   inserir(dados: any): Promise<any> {
     return axiosInstance.post(this.baseUrl, dados, {
       headers: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${MyComponent}`,
       },
     });
   }
@@ -41,7 +49,7 @@ class GeralService {
   alterar(id: number, dados: any): Promise<any> {
     return axiosInstance.put(`${this.baseUrl}/${id}`, dados, {
       headers: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${MyComponent}`,
       },
     });
   }
@@ -49,7 +57,7 @@ class GeralService {
   excluir(id: number): Promise<any> {
     return axiosInstance.delete(`${this.baseUrl}/${id}`, {
       headers: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${MyComponent}`,
       },
     });
   }
