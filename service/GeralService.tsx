@@ -1,13 +1,17 @@
+import React, { useState, useEffect } from 'react'; // Import React and hooks
 import axiosInstance from "axios";
 
 class GeralService {
   private readonly baseUrl: string;
-  private readonly token: string;
+  private token: string;
 
   constructor(endpoint: string) {
     this.baseUrl = `https://galeria-dos-pastores-production.up.railway.app${endpoint}`;
-    const localStorageToken = localStorage.getItem('authToken');
-    this.token = localStorageToken || ''; // Use empty string if no token found
+    this.token = ''; // Initialize token as empty string
+  }
+
+  private setToken(token: string) {
+    this.token = token;
   }
 
   listarTodos(): Promise<any> {
@@ -50,5 +54,26 @@ class GeralService {
     });
   }
 }
+
+// Wrap the class in a React functional component
+const GeralServiceWithToken = () => {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem('authToken');
+    setToken(localStorageToken || '');
+  }, []);
+
+  // Create an instance of GeralService with the updated token state
+  const service = new GeralService('/api'); // Assuming your endpoint starts with '/api'
+
+  return (
+    <div>
+      {/* Use the service instance with updated token here */}
+      {service.listarTodos()}
+      {/* ... other methods */}
+    </div>
+  );
+};
 
 export default GeralService;
