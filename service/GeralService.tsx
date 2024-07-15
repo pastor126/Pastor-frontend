@@ -1,59 +1,54 @@
-import axios from "axios";
+import axiosInstance from "axios";
 
-// Configurar a instância do Axios com uma URL base
-export const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL_API || 'https://pastor-frontend-production.up.railway.app/'
-  
+class GeralService {
+  private readonly baseUrl: string;
+  private readonly token: string;
 
-})
+  constructor(endpoint: string) {
+    this.baseUrl = `https://galeria-dos-pastores-production.up.railway.app${endpoint}`;
+    const localStorageToken = localStorage.getItem('authToken');
+    this.token = localStorageToken || ''; // Use empty string if no token found
+  }
 
-export class GeralService {
-    url: string;
+  listarTodos(): Promise<any> {
+    return axiosInstance.get(this.baseUrl, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
 
-    constructor(url: string) {
-        this.url = url;
+  buscarPorId(id: number): Promise<any> {
+    return axiosInstance.get(`${this.baseUrl}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
 
-        // Envia o token no cabeçalho da requisição
-        axiosInstance.interceptors.request.use((config) => {
-            const token = localStorage.getItem('TOKEN_APLIC_FRONTEND');
-            const authRequestToken = token ? `Bearer ${token}` : '';
-            config.headers['Authorization'] = authRequestToken;
-            return config;
-        }, (error) => Promise.reject(error));
-        
+  inserir(dados: any): Promise<any> {
+    return axiosInstance.post(this.baseUrl, dados, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
 
-        // Trata respostas e erros de autenticação
-        axiosInstance.interceptors.response.use((response) => {
-            return response;
-        }, async (erro) => {
-            const originalConfig = erro.config;
-            console.log(erro.response.status);
-            if (erro.response.status === 401) {
-                localStorage.removeItem('TOKEN_APLIC_FRONTEND');
-                window.location.reload();
-            }
-            return Promise.reject(erro);
-        });
-    }
+  alterar(id: number, dados: any): Promise<any> {
+    return axiosInstance.put(`${this.baseUrl}/${id}`, dados, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
 
-    // Métodos para realizar operações CRUD
-    listarTodos() {
-        return axiosInstance.get(this.url);
-    }
-
-    buscarPorId(id: number) {
-        return axiosInstance.get(`${this.url}/${id}`);
-    }
-
-    inserir(objeto: any) {
-        return axiosInstance.post(this.url, objeto);
-    }
-
-    alterar(objeto: any) {
-        return axiosInstance.put(this.url, objeto);
-    }
-
-    excluir(id: number) {
-        return axiosInstance.delete(`${this.url}/${id}`);
-    }
+  excluir(id: number): Promise<any> {
+    return axiosInstance.delete(`${this.baseUrl}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
 }
+
+export default GeralService;

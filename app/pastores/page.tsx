@@ -71,7 +71,22 @@ const PastorComponent: React.FC = () => {
           <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-10 pr-10 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
-               
+                {/* <th>
+                  <input className='ml-3 mr-3'
+                    type="checkbox"
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      if (checked) {
+                        if(pastors != null){
+                          setSelectedPastors(pastors);
+                        }
+                       
+                      } else {
+                        setSelectedPastors([]);
+                      }
+                    }}
+                  />
+                </th> */}
                 <th className="rounded-md border border-black pl-2 pr-2">Número</th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">Nome</th>
               </tr>
@@ -84,7 +99,20 @@ const PastorComponent: React.FC = () => {
                   )
                   .map((pastor) => (
                     <tr key={pastor.id}>
-              
+                      {/* <td>
+                        <input
+                          type="checkbox"
+                          checked={selectedPastors.includes(pastor)}
+                          onChange={(e) => {
+                            const checked = e.target.checked;
+                            setSelectedPastors((prevSelected) =>
+                              checked
+                                ? [...prevSelected, pastor]
+                                : prevSelected.filter((u) => u.id !== pastor.id)
+                            );
+                          }}
+                        />
+                      </td> */}
                       <td>{pastor.numero}</td>
                       <td>{pastor.nome}</td>
                     </tr>
