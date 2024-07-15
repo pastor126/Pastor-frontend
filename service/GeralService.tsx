@@ -12,13 +12,17 @@ export class GeralService {
 
   static setToken(newToken: string) {
     GeralService.token = newToken;
-    localStorage.setItem('authToken', newToken); // Salva o token no localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('authToken', newToken); // Salva o token no localStorage
+    }
   }
 
   private loadToken() {
-    const localStorageToken = localStorage.getItem('authToken');
-    if (localStorageToken) {
-      GeralService.token = localStorageToken;
+    if (typeof window !== 'undefined') {
+      const localStorageToken = localStorage.getItem('authToken');
+      if (localStorageToken) {
+        GeralService.token = localStorageToken;
+      }
     }
   }
 
