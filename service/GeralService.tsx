@@ -8,6 +8,8 @@ export class GeralService {
   constructor(endpoint: string) {
     this.baseUrl = `https://galeria-dos-pastores-production.up.railway.app${endpoint}`;
     this.loadToken(); // Carrega o token ao construir a instância de GeralService
+    console.log(this.baseUrl);
+    console.log(this.loadToken);
   }
 
   static setToken(newToken: string) {
@@ -20,9 +22,14 @@ export class GeralService {
   private loadToken() {
     if (typeof window !== 'undefined') {
       const localStorageToken = localStorage.getItem('authToken');
+     
       if (localStorageToken) {
         GeralService.token = localStorageToken;
+      }else{
+        console.log('Não carregou token');
       }
+    }else{
+      console.log( 'passou aqui');
     }
   }
 
