@@ -23,7 +23,7 @@ export default function Page() {
       <div className="text-center max-w-3xl bg-white shadow-md rounded-md">
         <h1 className="text-4xl mb-4 font-serif font-bold text-sky-900">Galeria dos Pastores</h1>
         <p className="text-2xl font-bold mb-6 italic">
-          &quot;De acordo com a tradição, espera-se que o detentor deste título. De acordo com a tradição, espera-se que o detentor deste nome seja amigo, legal, vigilante e, se necessário ... agressivo.&quot;
+          &quot;De acordo com a tradição, espera-se que o detentor deste título seja amigo, legal, vigilante e, se necessário ... agressivo.&quot;
         </p>
       </div>
     </div>
