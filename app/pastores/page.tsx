@@ -8,6 +8,7 @@ import { PastorService } from '@/service/PastorService';
 interface Pastor {
   id: number;
   numero: string;
+  nome: string;
   iniciais: string;
 }
 const checkAuth = () => {
@@ -25,8 +26,9 @@ const checkAuth = () => {
 const PastorComponent: React.FC = () => {
   const pastorVazio: Pastor = {
     id: 0,
-    numero: '',
-    iniciais: '',
+    numero: "",
+    iniciais: "",
+    nome: "",
   };
 
   const [pastors, setPastors] = useState<Pastor[] | null>(null);
@@ -108,7 +110,7 @@ const PastorComponent: React.FC = () => {
                   .map((pastor) => (
                     <tr key={pastor.id}>
                       <td className="rounded-md border border-black pl-4 pr-2 w-6">{pastor.numero}</td>
-                      <td className="rounded-md border border-black pl-4 pr-2 w-6">{pastor.iniciais}</td>
+                      <td className="rounded-md border border-black pl-4 pr-2 w-6"> {pastor.nome == null ? pastor.iniciais : pastor.nome}</td>
                     </tr>
                   ))
               ) : (
