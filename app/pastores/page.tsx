@@ -59,13 +59,12 @@ const PastorComponent: React.FC = () => {
   }, [pastorService, pastors]);
 
   return (
-    <div>
-      {autenticado ?
+    
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-emerald-100">
       <Image
         src="/Pastor.png"
-        width={300}
-        height={228}
+        width={150}
+        height={114}
         className="hidden md:block"
         alt="Imagem para desktop version"
       />
@@ -78,9 +77,9 @@ const PastorComponent: React.FC = () => {
       />
 
       <div className="crud-demo w-full max-w-4xl mt-12">
-        <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-          <div className="relative mt-4">
-            <MagnifyingGlassIcon className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+        <div className="flex-1 border-2 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2">
+          <div className="relative mt-2 mb-2 border border-black rounded-lg">
+            <MagnifyingGlassIcon className="absolute left-3 top-3 h-5 w-5 text-gray-500" />
             <input
               className="peer block w-full rounded-md border border-gray-400 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-900"
               type="text"
@@ -89,12 +88,12 @@ const PastorComponent: React.FC = () => {
               onChange={(e) => setGlobalFilter(e.target.value)}
             />
           </div>
-
+<div>
           <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-10 pr-10 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
-                <th className="rounded-md border border-black pl-2 pr-2 w-8">Número</th>
-                <th className="rounded-md border border-black pl-2 pr-2 w-80">Nome</th>
+                <th className="rounded-md border border-black  w-40">Número</th>
+                <th className="rounded-md border border-black pl-2 pr-2 w-full">Nome</th>
               </tr>
             </thead>
             <tbody>
@@ -114,17 +113,22 @@ const PastorComponent: React.FC = () => {
                   ))
               ) : (
                 <tr>
+                  <td></td>
                   <td colSpan={3} className="text-center">Nenhum Pastor encontrado</td>
                 </tr>
               )}
             </tbody>
           </table>
+          </div>
+          <a className=" text-m font-medium text-white hover:bg-red-400 focus-visible:outline-offset-2 focus-visible:outline-red-900   border-2 rounded-md  border-black ml-10 bg-red-500 mt-4 mb-1 pl-4 pr-4 flex items-center w-20" href='/autenticado'>
+          Voltar 
+        </a>
         </div>
+       
       </div>
-    </div>: <div className="flex h-screen text-4xl md:flex-row ml-20 pl-20"><a href="/login">Faça o Login!</a></div>}
+    {/* </div>: <div className="flex h-screen text-4xl md:flex-row ml-20 pl-20"><a href="/login">Faça o Login!</a></div>} */}
     </div>
   );
 }
- 
 
 export default PastorComponent;
