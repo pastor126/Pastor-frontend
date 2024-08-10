@@ -6,7 +6,7 @@ export class GeralService {
   private static token: string = '';
 
   constructor(endpoint: string) {
-    this.baseUrl = `http://localhost:8089${endpoint}`;
+    this.baseUrl = `https://galeria-dos-pastores-production.up.railway.app${endpoint}`;
     this.loadToken(); // Carrega o token ao construir a instância de GeralService
     console.log(this.baseUrl);
     console.log(this.loadToken);
