@@ -18,7 +18,7 @@ const Adm = () => {
     id: 0,
     nome: "",
     login: "",
-    senha: "",
+    senha: "123456",
     email: "",
     situacao: "",
   };
@@ -265,7 +265,7 @@ const Adm = () => {
                   className="rounded-md border border-black p-1 text-center ml-2 text-slate-500 w-48"
                   type="password"
                   placeholder="Senha"
-                  value={"123456"}
+                  value={usuario.senha}
                   onChange={(e) => onInputChange(e, "senha")}
                 />
                 <input
