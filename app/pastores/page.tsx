@@ -31,7 +31,6 @@ const PastorComponent: React.FC = () => {
   const [pastors, setPastors] = useState<Pastor[] | null>(null);
   const [pastorDialog, setPastorDialog] = useState(false);
   const [pastor, setPastor] = useState<Pastor>(pastorVazio);
-  const [selectedPastors, setSelectedPastors] = useState<Pastor[]>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const pastorService = useMemo(() => new PastorService(), []);
 

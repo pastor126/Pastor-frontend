@@ -29,7 +29,7 @@ export class GeralService {
         console.log('Não carregou token');
       }
     }else{
-      console.log( 'passou aqui');
+      console.log( 'Execução no lado do servidor, localStorage não está disponível');
     }
   }
 

@@ -1,9 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { TagIcon,} from '@heroicons/react/24/solid';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
 import InserirUsuarioForm from '../ui/inserir-usuario-form';
 
 

@@ -8,6 +8,8 @@ declare namespace Galeria {
         email: string;
     };
 
+
+
     type Recurso = {
         id?: number;
         nome: string;
