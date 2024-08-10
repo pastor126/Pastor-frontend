@@ -2,127 +2,123 @@
 import { Button } from "../ui/button";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { UsuarioService } from "@/service/UsuarioService";
+import { PastorService } from "@/service/PastorService";
 import { useRouter } from 'next/router';
 
-interface Usuario {
+interface Pastor {
   id: number;
+  numero: string;
+  iniciais: string;
   nome: string;
-  login: string;
-  senha: string;
-  email: string;
-  situacao: string;
 }
 
-const Adm = () => {
-  const usuarioVazio: Usuario = {
+const NovoP = () => {
+  const pastorVazio: Pastor = {
     id: 0,
+    numero: "",
+    iniciais: "",
     nome: "",
-    login: "",
-    senha: "123456",
-    email: "",
-    situacao: "",
   };
 
-  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
-  const [usuarioDialog, setUsuarioDialog] = useState(false);
-  const [deleteUsuarioDialog, setDeleteUsuarioDialog] = useState(false);
-  const [usuario, setUsuario] = useState<Usuario>(usuarioVazio);
+  const [pastores, setPastores] = useState<Pastor[]>([]);
+  const [pastorDialog, setPastorDialog] = useState(false);
+  const [deletePastorDialog, setDeletePastorDialog] = useState(false);
+  const [pastor, setPastor] = useState<Pastor>(pastorVazio);
   const [submitted, setSubmitted] = useState(false);
   const [globalFilter, setGlobalFilter] = useState("");
-  const usuarioService = useMemo(() => new UsuarioService(), []);
+  const pastorService = useMemo(() => new PastorService(), []);
 
 
  
 
-  const listarUsuarios = useCallback(() => {
-    usuarioService
+  const listarPastores = useCallback(() => {
+    pastorService
       .listarTodos()
       .then((response) => {
         console.log("Resposta completa da API:", response);
         console.log("Dados da API:", response.data);
         if (Array.isArray(response.data)) {
-          setUsuarios(response.data);
-          console.log("Usuários definidos:", response.data);
+          setPastores(response.data);
+          console.log("Pastores definidos:", response.data);
         } else {
           console.error("A resposta não é um array:", response.data);
         }
       })
       .catch((error) => {
-        console.error("Erro ao listar usuários:", error);
+        console.error("Erro ao listar Pastores:", error);
       });
-  }, [usuarioService]);
+  }, [pastorService]);
 
   useEffect(() => {
-    listarUsuarios();
-  }, [listarUsuarios]);
+    listarPastores();
+  }, [listarPastores]);
 
   const openNew = () => {
-    setUsuario(usuarioVazio);
+    setPastor(pastorVazio);
     setSubmitted(false);
-    setUsuarioDialog(true);
+    setPastorDialog(true);
   };
 
   const hideDialog = () => {
     setSubmitted(false);
-    setUsuarioDialog(false);
+    setPastorDialog(false);
   };
 
-  const hideDeleteUsuarioDialog = () => {
-    setDeleteUsuarioDialog(false);
+  const hideDeletePastorDialog = () => {
+    setDeletePastorDialog(false);
   };
 
-  const saveUsuario = async () => {
+  const savePastor = async () => {
     setSubmitted(true);
 
-    if (!usuario.id) {
-      usuarioService
-        .inserir(usuario)
+    if (!pastor.id) {
+      pastorService
+        .inserir(pastor)
         .then((response) => {
-          console.log("Usuário cadastrado com sucesso.");
-          setUsuarioDialog(false);
-          setUsuario(usuarioVazio);
-          listarUsuarios(); // Atualiza a lista de usuários
+          console.log("Pastor cadastrado com sucesso.");
+          setPastorDialog(false);
+          setPastor(pastorVazio);
+          listarPastores(); // Atualiza a lista de Pastors
         })
         .catch((error) => {
-          console.error("Erro ao salvar usuário", error);
+          console.error("Erro ao salvar Pastor", error);
         });
     } else {
-      usuarioService
-        .alterar(usuario.id, usuario)
+      pastorService
+        .alterar(pastor.id, pastor)
         .then((response) => {
-          console.log("Usuário atualizado com sucesso.");
-          setUsuarioDialog(false);
-          setUsuario(usuarioVazio);
-          listarUsuarios(); // Atualiza a lista de usuários
+          console.log("Pastor atualizado com sucesso.");
+          setPastorDialog(false);
+          setPastor(pastorVazio);
+          listarPastores(); // Atualiza a lista de Pastors
         })
         .catch((error) => {
-          console.error("Erro ao atualizar usuário", error);
+          console.error("Erro ao atualizar Pastor", error);
         });
     }
   };
 
-  const editUsuario = (usuario: Usuario) => {
-    setUsuario({ ...usuario });
-    setUsuarioDialog(true);
+  const editPastor = (pastor: Pastor) => {
+    setPastor({ ...pastor });
+    setPastorDialog(true);
   };
 
-  const confirmDeleteUsuario = (usuario: Usuario) => {
-    setUsuario(usuario);
-    setDeleteUsuarioDialog(true);
+  const confirmDeletePastor = (pastor: Pastor) => {
+    setPastor(pastor);
+    setDeletePastorDialog(true);
   };
 
-  const deleteUsuario = async () => {
-    usuarioService
-      .excluir(usuario.id)
+  const deletePastor = async () => {
+    pastorService
+      .excluir(pastor.id)
       .then((response) => {
-        console.log("Usuário excluído com sucesso.");
-        setDeleteUsuarioDialog(false);
-        setUsuario(usuarioVazio);
-        listarUsuarios(); // Atualiza a lista de usuários
+        console.log("Pastor excluído com sucesso.");
+        setDeletePastorDialog(false);
+        setPastor(pastorVazio);
+        listarPastores(); // Atualiza a lista de Pastors
       })
       .catch((error) => {
-        console.error("Erro ao deletar usuário", error);
+        console.error("Erro ao deletar Pastor", error);
       });
   };
 
@@ -131,8 +127,8 @@ const Adm = () => {
     name: string
   ) => {
     const val = e.target.value;
-    setUsuario((prevUsuario) => ({
-      ...prevUsuario,
+    setPastor((prevPastor) => ({
+      ...prevPastor,
       [name]: val,
     }));
   };
@@ -152,7 +148,7 @@ const Adm = () => {
         </div>
 
       <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
-        <h1 className="font-bold text-xl">Cadastro de Usuários</h1>
+        <h1 className="font-bold text-xl">Cadastro de Pastor</h1>
         <div className="flex">
           <div className="relative mb-2 mr-2 w-full">
             <MagnifyingGlassIcon className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -179,43 +175,43 @@ const Adm = () => {
                   Código
                 </th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
-                  Nome
+                  Número
                 </th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-40">
-                  Login
+                  Nome
                 </th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
-                  Email
+                  Iniciais
                 </th>
               </tr>
             </thead>
             <tbody>
-              {Array.isArray(usuarios) && usuarios.length > 0 ? (
-                usuarios
-                  .filter((usuario) =>
-                    usuario.nome
+              {Array.isArray(pastores) && pastores.length > 0 ? (
+                pastores
+                  .filter((pastor) =>
+                    pastor.nome
                       .toLowerCase()
                       .includes(globalFilter.toLowerCase())
                   )
-                  .map((usuario) => (
-                    <tr key={usuario.id}>
-                      <td className="border border-black pl-8">{usuario.id}</td>
+                  .map((pastor) => (
+                    <tr key={pastor.id}>
+                      <td className="border border-black pl-8">{pastor.id}</td>
                       <td className="border border-black pl-2">
-                        {usuario.nome}
+                        {pastor.numero}
                       </td>
                       <td className="border border-black pl-2">
-                        {usuario.login}
+                        {pastor.nome}
                       </td>
                       <td className="border border-black pl-2">
-                        {usuario.email}
+                        {pastor.iniciais}
                       </td>
                       <td className="border border-black pl-2 flex">
-                        <Button onClick={() => editUsuario(usuario)}>
+                        <Button onClick={() => editPastor(pastor)}>
                           Editar
                         </Button>
                         <Button
                           className="ml-4 bg-red-500"
-                          onClick={() => confirmDeleteUsuario(usuario)}
+                          onClick={() => confirmDeletePastor(pastor)}
                         >
                           Excluir
                         </Button>
@@ -225,7 +221,7 @@ const Adm = () => {
               ) : (
                 <tr>
                   <td colSpan={5} className="text-center">
-                    Nenhum usuário encontrado
+                    Nenhum Pastor encontrado
                   </td>
                 </tr>
               )}
@@ -234,66 +230,51 @@ const Adm = () => {
         </div>
 
         <div>
-          {usuarioDialog && (
+          {pastorDialog && (
             <div>
               <h4 className="border-t border-black mt-2 text-center font-bold text-xl">
-                Detalhes de Usuário
+                Detalhes do Pastor
               </h4>
 
-              <label className="ml-20 pl-20">Nome</label>
-              <label className="ml-40 pl-10">Login</label>
-              <label className="ml-40 mr-6 pl-4">E-mail</label>
-              <label className="ml-60 mr-10 pl-4">Senha</label>
-              <label className="ml-8 pl-4">Situação</label>
+              <label className="ml-20 pl-20">Número</label>
+              <label className="ml-40 pl-10">Nome</label>
+              <label className="ml-40 mr-6 pl-4">Iniciais</label>
               <div>
                 <input
                   className="hidden"
                   type="id"
                   placeholder="Id"
-                  value={usuario.id}
+                  value={pastor.id}
                   onChange={(e) => onInputChange(e, "id")}
                 />
 
                 <input
                   className="rounded-md border border-black p-1 text-center w-4/12 mr-2 text-slate-500"
                   type="text"
-                  placeholder="Nome"
-                  value={usuario.nome}
-                  onChange={(e) => onInputChange(e, "nome")}
+                  placeholder="Número"
+                  value={pastor.numero}
+                  onChange={(e) => onInputChange(e, "numero")}
                 />
                 <input
                   className="rounded-md border border-black p-1 text-center w-20 mr-2 text-slate-500"
                   type="text"
-                  placeholder="Login"
-                  value={usuario.login}
-                  onChange={(e) => onInputChange(e, "login")}
+                  placeholder="Nome"
+                  value={pastor.nome}
+                  onChange={(e) => onInputChange(e, "nome")}
                 />
 
                 <input
                   className="rounded-md border border-black p-1 text-center w-4/12 text-slate-500"
-                  type="email"
-                  placeholder="Email"
-                  value={usuario.email}
-                  onChange={(e) => onInputChange(e, "email")}
+                  type="text"
+                  placeholder="Iniciais"
+                  value={pastor.iniciais}
+                  onChange={(e) => onInputChange(e, "iniciais")}
                 />
 
-                <input
-                  className="rounded-md border border-black p-1 text-center ml-2 text-slate-500 w-48"
-                  type="password"
-                  placeholder="Senha"
-                  value={usuario.senha}
-                  onChange={(e) => onInputChange(e, "senha")}
-                />
-                <input
-                  className="rounded-md border border-black p-1 text-center ml-2 text-slate-500 w-20"
-                  type="text"
-                  value={usuario.situacao}
-                  onChange={(e) => onInputChange(e, "situacao")}
-                />
                 <div className="flex justify-center mt-2">
                   <Button
                     className="bg-green-500 ml-4 pl-6 pr-6"
-                    onClick={saveUsuario}
+                    onClick={savePastor}
                   >
                     Salvar
                   </Button>
@@ -305,19 +286,19 @@ const Adm = () => {
             </div>
           )}
 
-          {deleteUsuarioDialog && (
+          {deletePastorDialog && (
             <div>
-              <p>Você realmente deseja excluir o usuário {usuario.nome}?</p>
+              <p>Você realmente deseja excluir {pastor.nome}?</p>
               <div className="flex justify-center mt-2">
                 <Button
                   className="bg-orange-500 ml-4 pl-4"
-                  onClick={hideDeleteUsuarioDialog}
+                  onClick={hideDeletePastorDialog}
                 >
                   Cancelar
                 </Button>
                 <Button
                   className="bg-red-500 ml-8 pl-6 pr-6"
-                  onClick={deleteUsuario}
+                  onClick={deletePastor}
                 >
                   Excluir
                 </Button>
@@ -340,4 +321,4 @@ const Adm = () => {
   );
 };
 
-export default Adm;
+export default NovoP;
