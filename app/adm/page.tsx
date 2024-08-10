@@ -265,7 +265,7 @@ const Adm = () => {
                   className="rounded-md border border-black p-1 text-center ml-2 text-slate-500 w-48"
                   type="password"
                   placeholder="Senha"
-                  value={123456}
+                  value={"123456"}
                   onChange={(e) => onInputChange(e, "senha")}
                 />
                 <input
