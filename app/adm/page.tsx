@@ -138,7 +138,7 @@ const Adm = () => {
   };
 
   return (
-    <div className="">
+    <div className="ml-0">
 
 <div className="flex-1 bg-gray-50  pb-4 pt-2">
         <div className=" border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
@@ -172,7 +172,7 @@ const Adm = () => {
           </div>
         </div>
         <div className="overflow-auto max-h-[60vh]">
-          <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-4 pr-4 text-sm outline-2 placeholder:text-gray-900">
+          <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-2 pr-2 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
                
@@ -197,7 +197,7 @@ const Adm = () => {
                   )
                   .map((usuario) => (
                     <tr key={usuario.id}>
-                      <td className="border border-black pl-8">{usuario.id}</td>
+                      <td className="hidden">{usuario.id}</td>
                       <td className="border border-black pl-2">
                         {usuario.nome}
                       </td>

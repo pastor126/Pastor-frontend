@@ -193,7 +193,7 @@ const NovoP = () => {
                   )
                   .map((pastor) => (
                     <tr key={pastor.id}>
-                      <td className="border border-black pl-8">{pastor.id}</td>
+                      <td className="hidden">{pastor.id}</td>
                       <td className="border border-black pl-2">
                         {pastor.numero}
                       </td>
