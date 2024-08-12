@@ -234,10 +234,10 @@ const NovoP = () => {
                 Detalhes do Pastor
               </h4>
 
-              <label className="ml-20 pl-20">Número</label>
-              <label className="ml-40 pl-10">Nome</label>
-              <label className="ml-40 mr-6 pl-4">Iniciais</label>
-              <div>
+              <label className="pl-2 pr-2 w-20">Número</label>
+              <label className="pl-2 pr-2 w-80">Nome</label>
+              <label className="pl-2 pr-2 w-80">Iniciais</label>
+              <div className="w-auto">
                 <input
                   className="hidden"
                   type="id"
@@ -247,14 +247,14 @@ const NovoP = () => {
                 />
 
                 <input
-                  className="rounded-md border border-black p-1 text-center w-4/12 mr-2 text-slate-500"
+                  className="rounded-md border border-black p-1 text-center w-20 text-slate-500"
                   type="text"
                   placeholder="Número"
                   value={pastor.numero}
                   onChange={(e) => onInputChange(e, "numero")}
                 />
                 <input
-                  className="rounded-md border border-black p-1 text-center w-20 mr-2 text-slate-500"
+                  className="rounded-md border border-black p-1 text-center w-2/5 ml-2 mr-2 text-slate-500"
                   type="text"
                   placeholder="Nome"
                   value={pastor.nome}
@@ -262,7 +262,7 @@ const NovoP = () => {
                 />
 
                 <input
-                  className="rounded-md border border-black p-1 text-center w-4/12 text-slate-500"
+                  className="rounded-md border border-black p-1 text-center w-2/5 text-slate-500"
                   type="text"
                   placeholder="Iniciais"
                   value={pastor.iniciais}

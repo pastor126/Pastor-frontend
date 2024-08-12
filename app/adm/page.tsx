@@ -239,10 +239,9 @@ const Adm = () => {
               </h4>
 
               <label className="ml-20 pl-20">Nome</label>
-              <label className="ml-40 pl-10">Login</label>
+              <label className="ml-40 pl-2">Login</label>
               <label className="ml-40 mr-6 pl-4">E-mail</label>
-              <label className="ml-60 mr-10 pl-4">Senha</label>
-              <label className="ml-8 pl-4">Situação</label>
+              <label className="ml-14 pl-20">Situação</label>
               <div>
                 <input
                   className="hidden"
@@ -276,9 +275,8 @@ const Adm = () => {
                 />
 
                 <input
-                  className="rounded-md border border-black p-1 text-center ml-2 text-slate-500 w-48"
+                  className="hidden"
                   type="password"
-                  placeholder="Senha"
                   value={usuario.senha}
                   onChange={(e) => onInputChange(e, "senha")}
                 />
