@@ -6,13 +6,12 @@ import Image from 'next/image';
 
 export default function SideNav() {
   return (
-    <div className="flex h-full flex-col px-3 py-4 md:px-5">
+    <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
         className="mb-2 flex h-20 items-end justify-center rounded-md bg-blue-600 p-4 md:h-40"
         href="/"
       >
         <div className="flex items-center justify-center w-32 text-white md:w-40">
-        {/* <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12"> */}
         <Image
         src="/PSarLogo.png"
         width={100}
@@ -27,7 +26,6 @@ export default function SideNav() {
         className="block md:hidden"
         alt="Imagem para mobile version"
       />
-        {/* </div> */}
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">

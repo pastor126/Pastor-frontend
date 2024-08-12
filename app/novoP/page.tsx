@@ -172,17 +172,15 @@ const NovoP = () => {
             <thead className="rounded-md border border-black">
               <tr>
                 <th className="rounded-md border border-black pl-2 pr-2 w-20">
-                  Código
-                </th>
-                <th className="rounded-md border border-black pl-2 pr-2 w-80">
                   Número
                 </th>
-                <th className="rounded-md border border-black pl-2 pr-2 w-40">
+                <th className="rounded-md border border-black pl-2 pr-2 w-80">
                   Nome
                 </th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
                   Iniciais
                 </th>
+                <th className="rounded-md border border-black pl-2 pr-2 w-40">Gerência</th>
               </tr>
             </thead>
             <tbody>
@@ -205,12 +203,12 @@ const NovoP = () => {
                       <td className="border border-black pl-2">
                         {pastor.iniciais}
                       </td>
-                      <td className="border border-black pl-2 flex">
-                        <Button onClick={() => editPastor(pastor)}>
+                      <td className="border border-black  flex">
+                        <Button className="pl-4 pr-4 bg-yellow-300" onClick={() => editPastor(pastor)}>
                           Editar
                         </Button>
                         <Button
-                          className="ml-4 bg-red-500"
+                          className="ml-2 pl-4 pr-4 bg-red-500"
                           onClick={() => confirmDeletePastor(pastor)}
                         >
                           Excluir
@@ -306,16 +304,6 @@ const NovoP = () => {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Botão de Voltar */}
-      <div className="fixed bottom-4 left-4">
-        <a
-          className="inline-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          href="/autenticado"
-        >
-          Voltar
-        </a>
       </div>
     </div>
   );

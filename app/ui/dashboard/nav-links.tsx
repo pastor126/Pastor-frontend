@@ -21,18 +21,19 @@ type Pastor = {
 };
 
 export default function NavLinks() {
-  const pastorService = useMemo(() => new PastorService(), []);
 
-  const [pastor, setPastor] = useState<Pastor | null>(null);
+  const pastorService = useMemo(() => new PastorService(), []);
+  const [pastor, setPastor] = useState<Pastor | null>(null);  
   const [autenticado, setAutenticado] = useState<false | true>(false);
+  
 
 
   useEffect(() => {
     async function fetchPastor() {
       try {
         const result = await pastorService.buscarPorId(1);
-        console.log("Pastor retornado:", result); // Verifique se o campo 'nome' está correto
-        setPastor(result.data);
+        console.log("Pastor retornado:", result);
+        setPastor(result.data);              
         if(pastor?.nome != null && pastor.nome != ""){
           setAutenticado(true);
         }
@@ -60,7 +61,8 @@ export default function NavLinks() {
 
   return (
     <>
-      {pastor ? (
+      {pastor ?
+       (
         links.map((link) => {
           const LinkIcon = link.icon;
           return (
@@ -79,7 +81,8 @@ export default function NavLinks() {
             </Link>
           );
         })
-      ) : (
+      ) 
+      : (
         <p>Carregando...</p>
       )}
     </>

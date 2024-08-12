@@ -24,6 +24,7 @@ const Adm = () => {
     situacao: "",
   };
 
+
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [usuarioDialog, setUsuarioDialog] = useState(false);
   const [deleteUsuarioDialog, setDeleteUsuarioDialog] = useState(false);
@@ -33,8 +34,6 @@ const Adm = () => {
   const usuarioService = useMemo(() => new UsuarioService(), []);
 
 
- 
-
   const listarUsuarios = useCallback(() => {
     usuarioService
       .listarTodos()
@@ -42,9 +41,10 @@ const Adm = () => {
         console.log("Resposta completa da API:", response);
         console.log("Dados da API:", response.data);
         if (Array.isArray(response.data)) {
-          setUsuarios(response.data);
+          setUsuarios(response.data);   
           console.log("Usuários definidos:", response.data);
         } else {
+          setUsuarios(response.data);
           console.error("A resposta não é um array:", response.data);
         }
       })
@@ -138,9 +138,9 @@ const Adm = () => {
   };
 
   return (
-    <div className="crud-demo relative">
+    <div className="">
 
-<div className="flex-1 bg-gray-50  pb-4 pt-2 ">
+<div className="flex-1 bg-gray-50  pb-4 pt-2">
         <div className=" border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
         <h1 className="font-bold text-xl">Cadastro de Novos Pastores</h1>
         <div >
@@ -172,16 +172,14 @@ const Adm = () => {
           </div>
         </div>
         <div className="overflow-auto max-h-[60vh]">
-          <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-10 pr-10 text-sm outline-2 placeholder:text-gray-900">
+          <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-4 pr-4 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
-                <th className="rounded-md border border-black pl-2 pr-2 w-20">
-                  Código
-                </th>
+               
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
                   Nome
                 </th>
-                <th className="rounded-md border border-black pl-2 pr-2 w-40">
+                <th className="rounded-md border border-black pl-4 pr-4 w-20">
                   Login
                 </th>
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
@@ -210,11 +208,11 @@ const Adm = () => {
                         {usuario.email}
                       </td>
                       <td className="border border-black pl-2 flex">
-                        <Button onClick={() => editUsuario(usuario)}>
+                        <Button className="pl-6 pr-6 bg-yellow-300" onClick={() => editUsuario(usuario)}>
                           Editar
                         </Button>
                         <Button
-                          className="ml-4 bg-red-500"
+                           className="ml-4 pl-5 pr-5 bg-red-500"
                           onClick={() => confirmDeleteUsuario(usuario)}
                         >
                           Excluir
@@ -224,7 +222,7 @@ const Adm = () => {
                   ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="text-center">
+                   <td colSpan={5} className="text-center">
                     Nenhum usuário encontrado
                   </td>
                 </tr>
@@ -327,15 +325,6 @@ const Adm = () => {
         </div>
       </div>
 
-      {/* Botão de Voltar */}
-      <div className="fixed bottom-4 left-4">
-        <a
-          className="inline-block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          href="/autenticado"
-        >
-          Voltar
-        </a>
-      </div>
     </div>
   );
 };
