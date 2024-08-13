@@ -100,7 +100,7 @@ const PastorComponent: React.FC = () => {
         }
     
         doc.text(pastor.numero, margin, y);
-        doc.text(pastor.nome || pastor.iniciais, margin + 50, y);
+        doc.text(pastor.nome || pastor.iniciais, margin + 30, y);
         y += lineHeight;
         currentLine++;
       });
@@ -163,7 +163,7 @@ const PastorComponent: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {Array.isArray(pastors) && pastors.length > 0 ? (
+                {/* {Array.isArray(pastors) && pastors.length > 0 ? ( 
                   pastors
                     .filter(
                       (pastor) =>
@@ -173,15 +173,17 @@ const PastorComponent: React.FC = () => {
                         pastor.numero.includes(globalFilter)
                     )
                     .map((pastor) => (
-                      <tr key={pastor.id}>
+                      <tr key={pastor.id}> */}
                         <td className="rounded-md border border-black pl-4 pr-2 w-6">
-                          {pastor.numero}
+                          {/* {pastor.numero} */}
+                          126
                         </td>
                         <td className="rounded-md border border-black pl-4 pr-2 w-6">
                           {" "}
-                          {pastor.nome == null ? pastor.iniciais : pastor.nome}
+                          {/* {pastor.nome == null ? pastor.iniciais : pastor.nome} */}
+                          Eduardo c cp
                         </td>
-                      </tr>
+                      {/* </tr>
                     ))
                 ) : (
                   <tr>
@@ -190,7 +192,7 @@ const PastorComponent: React.FC = () => {
                       Nenhum Pastor encontrado
                     </td>
                   </tr>
-                )}
+                )} */}
               </tbody>
             </table>
           </div>

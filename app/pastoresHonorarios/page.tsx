@@ -103,7 +103,7 @@ const PastorComponent: React.FC = () => {
         }
 
         doc.text(pastor.numero, margin, y);
-        doc.text(pastor.nome || pastor.iniciais, margin + 50, y);
+        doc.text(pastor.nome || pastor.iniciais, margin + 30, y);
         y += lineHeight;
         currentLine++;
       });
