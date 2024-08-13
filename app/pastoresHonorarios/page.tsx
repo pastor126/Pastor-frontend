@@ -92,7 +92,7 @@ const PastorComponent: React.FC = () => {
     addHeader();
 
     if (pastors && pastors.length > 0) {
-      // Coloque o código que manipula 'pastors' aqui
+ 
       pastors.forEach((pastor, index) => {
         if (currentLine === maxLinesPerPage) {
           addFooter(currentPage); // Adiciona rodapé

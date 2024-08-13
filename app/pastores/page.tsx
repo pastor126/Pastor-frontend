@@ -89,7 +89,7 @@ const PastorComponent: React.FC = () => {
     addHeader();
   
     if (pastors && pastors.length > 0) {
-      // Coloque o código que manipula 'pastors' aqui
+      // Código que manipula 'pastors'
       pastors.forEach((pastor, index) => {
         if (currentLine === maxLinesPerPage) {
           addFooter(currentPage); // Adiciona rodapé
@@ -163,7 +163,7 @@ const PastorComponent: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* {Array.isArray(pastors) && pastors.length > 0 ? ( 
+                {Array.isArray(pastors) && pastors.length > 0 ? ( 
                   pastors
                     .filter(
                       (pastor) =>
@@ -173,17 +173,15 @@ const PastorComponent: React.FC = () => {
                         pastor.numero.includes(globalFilter)
                     )
                     .map((pastor) => (
-                      <tr key={pastor.id}> */}
+                      <tr key={pastor.id}>
                         <td className="rounded-md border border-black pl-4 pr-2 w-6">
-                          {/* {pastor.numero} */}
-                          126
+                          {pastor.numero}
                         </td>
                         <td className="rounded-md border border-black pl-4 pr-2 w-6">
                           {" "}
-                          {/* {pastor.nome == null ? pastor.iniciais : pastor.nome} */}
-                          Eduardo c cp
+                          {pastor.nome == null ? pastor.iniciais : pastor.nome}
                         </td>
-                      {/* </tr>
+                      </tr>
                     ))
                 ) : (
                   <tr>
@@ -192,7 +190,7 @@ const PastorComponent: React.FC = () => {
                       Nenhum Pastor encontrado
                     </td>
                   </tr>
-                )} */}
+                )}
               </tbody>
             </table>
           </div>
