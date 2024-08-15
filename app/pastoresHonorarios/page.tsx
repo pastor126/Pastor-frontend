@@ -83,7 +83,7 @@ const PastorComponent: React.FC = () => {
       doc.setTextColor("black");
       doc.text("Número", margin, 50);
       doc.text("Nome", margin + 60, 50);
-      y = 40;
+      y = 60;
     };
 
     // Função para adicionar rodapé
