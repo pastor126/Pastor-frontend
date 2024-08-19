@@ -140,8 +140,8 @@ const Adm = () => {
   return (
     <div className="ml-0">
 
-<div className="flex-1 bg-gray-50  pb-4 pt-2">
-        <div className=" border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
+<div className="flex-1 bg-gray-50  pb-1">
+        <div className=" border-4 border-black rounded-lg bg-gray-50 px-6 pb-2  ">
         <h1 className="font-bold text-xl">Cadastro de Novos Pastores</h1>
         <div >
         <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-11 pr-11 rounded" href="/novoP">Pastor</a>
@@ -151,13 +151,13 @@ const Adm = () => {
         </div>
         </div>
 
-      <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
+      <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-2 ">
         <h1 className="font-bold text-xl">Cadastro de Usuários</h1>
         <div className="flex">
           <div className="relative mb-2 mr-2 w-full">
-            <MagnifyingGlassIcon className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <MagnifyingGlassIcon className="absolute left-3 top-2 h-5 w-5 text-gray-400" />
             <input
-              className="peer block w-full rounded-md border border-gray-400 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-900"
+              className="peer block w-full rounded-md border border-gray-400 py-[6px] pl-10 text-sm outline-2 placeholder:text-gray-900"
               type="text"
               placeholder="Search..."
               value={globalFilter}
@@ -166,12 +166,12 @@ const Adm = () => {
           </div>
 
           <div className="relative">
-            <Button className="w-60 pl-20 bg-green-500" onClick={openNew}>
+            <Button className="w-60 pl-20 h-9 bg-green-500" onClick={openNew}>
               Novo
             </Button>
           </div>
         </div>
-        <div className="overflow-auto max-h-[60vh]">
+        <div className="overflow-auto max-h-[50vh]">
           <table className="table-fixed w-full rounded-md border border-gray-400 py-[9px] pl-2 pr-2 text-sm outline-2 placeholder:text-gray-900">
             <thead className="rounded-md border border-black">
               <tr>
