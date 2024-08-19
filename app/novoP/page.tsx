@@ -234,9 +234,9 @@ const NovoP = () => {
                 Detalhes do Pastor
               </h4>
 
-              <label className="pl-2 pr-2 w-20">Número</label>
-              <label className="pl-2 pr-2 w-80">Nome</label>
-              <label className="pl-2 pr-2 w-80">Iniciais</label>
+              <label className="pl-2 pr-6 w-20">Número</label>
+              <label className="pl-40 pr-40 w-80">Nome</label>
+              <label className="pl-60 pr-2 w-80">Iniciais</label>
               <div className="w-auto">
                 <input
                   className="hidden"
@@ -247,14 +247,14 @@ const NovoP = () => {
                 />
 
                 <input
-                  className="rounded-md border border-black p-1 text-center w-20 text-slate-500"
+                  className="rounded-md border border-black  text-center w-20 text-slate-500"
                   type="text"
                   placeholder="Número"
                   value={pastor.numero}
                   onChange={(e) => onInputChange(e, "numero")}
                 />
                 <input
-                  className="rounded-md border border-black p-1 text-center w-2/5 ml-2 mr-2 text-slate-500"
+                  className="rounded-md border border-black  text-center w-2/5 ml-2 mr-2 text-slate-500"
                   type="text"
                   placeholder="Nome"
                   value={pastor.nome}
@@ -262,21 +262,19 @@ const NovoP = () => {
                 />
 
                 <input
-                  className="rounded-md border border-black p-1 text-center w-2/5 text-slate-500"
+                  className="rounded-md border border-black  text-center w-2/5 text-slate-500"
                   type="text"
                   placeholder="Iniciais"
                   value={pastor.iniciais}
                   onChange={(e) => onInputChange(e, "iniciais")}
                 />
 
-                <div className="flex justify-center mt-2">
+                <div className="flex justify-center mt-2 mr-6">
                   <Button
-                    className="bg-green-500 ml-4 pl-6 pr-6"
-                    onClick={savePastor}
-                  >
+                    className="bg-green-500 h-9 pl-6 pr-6" onClick={savePastor}>
                     Salvar
                   </Button>
-                  <Button className="bg-red-500 ml-8" onClick={hideDialog}>
+                  <Button className="bg-red-500 h-9 ml-8" onClick={hideDialog}>
                     Cancelar
                   </Button>
                 </div>
