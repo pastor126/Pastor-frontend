@@ -4,6 +4,7 @@ import {
   HomeIcon,
   DocumentDuplicateIcon,
   Cog8ToothIcon,
+  ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -53,6 +54,7 @@ export default function NavLinks() {
     { name: "Home", href: "/autenticado", icon: HomeIcon },
     { name: "Pastores", href: "/pastores", icon: UserGroupIcon },
     { name: "PastoresHonorarios", href: "/pastoresHonorarios", icon: DocumentDuplicateIcon },
+    { name: "Fale comigo!", href: "/contato", icon: ChatBubbleLeftEllipsisIcon },
     { name: "Config", href: pastor?.nome ? "/adm" : "/naoautorizado", icon: Cog8ToothIcon },
   ], [pastor]);
   

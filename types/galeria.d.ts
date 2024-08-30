@@ -8,6 +8,12 @@ declare namespace Galeria {
         email: string;
     };
 
+    type Falecomigo = {
+        telefone: number;
+        nome: string;
+        email: string;
+        mensagem: string;
+      };
 
 
     type Recurso = {
