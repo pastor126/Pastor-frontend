@@ -145,7 +145,7 @@ const Adm = () => {
         <h1 className="font-bold text-xl">Cadastro de Novos Pastores</h1>
         <div >
         <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-11 pr-11 rounded" href="/novoP">Pastor</a>
-        <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-1 pr-1 rounded ml-4" href="/novoP">Pastor Honorário</a>
+        <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-1 pr-1 rounded ml-4" href="/novoPHonor">Pastor Honorário</a>
 
         </div>
         </div>

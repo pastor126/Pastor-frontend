@@ -2,7 +2,7 @@
 import { Button } from "../ui/button";
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { PastorService } from "@/service/PastorService";
+import { PastorHonorarioService } from "@/service/PastorHonorarioService";
 import { useRouter } from 'next/router';
 
 interface Pastor {
@@ -12,7 +12,7 @@ interface Pastor {
   nome: string;
 }
 
-const NovoP = () => {
+const NovoPHonor = () => {
   const pastorVazio: Pastor = {
     id: 0,
     numero: "",
@@ -26,28 +26,28 @@ const NovoP = () => {
   const [pastor, setPastor] = useState<Pastor>(pastorVazio);
   const [submitted, setSubmitted] = useState(false);
   const [globalFilter, setGlobalFilter] = useState("");
-  const pastorService = useMemo(() => new PastorService(), []);
+  const pastorHonorService = useMemo(() => new PastorHonorarioService(), []);
 
 
  
 
   const listarPastores = useCallback(() => {
-    pastorService
+    pastorHonorService
       .listarTodos()
       .then((response) => {
         console.log("Resposta completa da API:", response);
         console.log("Dados da API:", response.data);
         if (Array.isArray(response.data)) {
           setPastores(response.data);
-          console.log("Pastores definidos:", response.data);
+          console.log("Pastores Honorários definidos:", response.data);
         } else {
           console.error("A resposta não é um array:", response.data);
         }
       })
       .catch((error) => {
-        console.error("Erro ao listar Pastores:", error);
+        console.error("Erro ao listar Pastores Honorários:", error);
       });
-  }, [pastorService]);
+  }, [pastorHonorService]);
 
   useEffect(() => {
     listarPastores();
@@ -72,28 +72,28 @@ const NovoP = () => {
     setSubmitted(true);
 
     if (!pastor.id) {
-      pastorService
+      pastorHonorService
         .inserir(pastor)
         .then((response) => {
           console.log("Pastor cadastrado com sucesso.");
           setPastorDialog(false);
           setPastor(pastorVazio);
-          listarPastores(); // Atualiza a lista de Pastors
+          listarPastores(); // Atualiza a lista de Pastores honorários
         })
         .catch((error) => {
-          console.error("Erro ao salvar Pastor", error);
+          console.error("Erro ao salvar Pastor Honorário", error);
         });
     } else {
-      pastorService
+      pastorHonorService
         .alterar(pastor.id, pastor)
         .then((response) => {
-          console.log("Pastor atualizado com sucesso.");
+          console.log("Pastor Honorário atualizado com sucesso.");
           setPastorDialog(false);
           setPastor(pastorVazio);
           listarPastores(); // Atualiza a lista de Pastors
         })
         .catch((error) => {
-          console.error("Erro ao atualizar Pastor", error);
+          console.error("Erro ao atualizar Pastor Honorário.", error);
         });
     }
   };
@@ -109,16 +109,16 @@ const NovoP = () => {
   };
 
   const deletePastor = async () => {
-    pastorService
+    pastorHonorService
       .excluir(pastor.id)
       .then((response) => {
-        console.log("Pastor excluído com sucesso.");
+        console.log("Pastor Honorário excluído com sucesso.");
         setDeletePastorDialog(false);
         setPastor(pastorVazio);
         listarPastores(); // Atualiza a lista de Pastors
       })
       .catch((error) => {
-        console.error("Erro ao deletar Pastor", error);
+        console.error("Erro ao deletar Pastor Honorário", error);
       });
   };
 
@@ -141,14 +141,14 @@ const NovoP = () => {
         <h1 className="font-bold text-xl">Cadastro de Novos Pastores</h1>
         <div >
         <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-11 pr-11 rounded" href="/novoP">Pastor</a>
-        <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-1 pr-1 rounded ml-4" href="/novoPHonor">Pastor Honorário</a>
+        <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-1 pr-1 rounded ml-4" href="/novoP">Pastor Honorário</a>
 
         </div>
         </div>
         </div>
 
       <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-4 pt-2 ">
-        <h1 className="font-bold text-xl">Cadastro de Pastor</h1>
+        <h1 className="font-bold text-xl">Cadastro de Pastor Honorário</h1>
         <div className="flex">
           <div className="relative mb-2 mr-2 w-full">
             <MagnifyingGlassIcon className="absolute left-3 top-2 h-5 w-5 text-gray-400" />
@@ -307,4 +307,4 @@ const NovoP = () => {
   );
 };
 
-export default NovoP;
+export default NovoPHonor;

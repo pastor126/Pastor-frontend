@@ -141,7 +141,7 @@ export default function InserirContatoForm() {
           Salvar
         </Button>
         
-            <a className=" text-m font-medium text-white transition-colors hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 active:bg-red-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 border-2 rounded-md  border-black ml-10 bg-red-500 mt-2 mb-1 px-2 flex items-center w-30" href='/'>
+            <a className=" text-m font-medium text-white transition-colors hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 active:bg-red-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50 border-2 rounded-md  border-black ml-10 bg-red-500 mt-2 mb-1 px-2 flex items-center w-30" href='/autenticado'>
           Cancelar 
         </a> 
 </div>
