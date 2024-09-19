@@ -141,7 +141,7 @@ const Adm = () => {
     <div className="ml-0">
 
 <div className="flex-1 bg-gray-50  pb-1">
-        <div className=" border-4 border-black rounded-lg bg-gray-50 px-6 pb-2  ">
+        <div className=" border-4 border-black rounded-lg bg-gray-50 px-2 pb-2  ">
         <h1 className="font-bold text-xl">Cadastro de Novos Pastores</h1>
         <div >
         <a className="inline-block border-4 border-orange-500 text-center bg-blue-500 hover:bg-blue-700 text-white font-bold pl-11 pr-11 rounded" href="/novoP">Pastor</a>
@@ -151,7 +151,7 @@ const Adm = () => {
         </div>
         </div>
 
-      <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-6 pb-2 ">
+      <div className="flex-1 border-4 border-black rounded-lg bg-gray-50 px-2 pb-2 ">
         <h1 className="font-bold text-xl">Cadastro de Usuários</h1>
         <div className="flex">
           <div className="relative mb-2 mr-2 w-full">
@@ -179,10 +179,10 @@ const Adm = () => {
                 <th className="rounded-md border border-black pl-2 pr-2 w-80">
                   Nome
                 </th>
-                <th className="rounded-md border border-black pl-4 pr-4 w-20">
+                <th className="rounded-md border border-black pl-4 pr-4 w-60">
                   Login
                 </th>
-                <th className="rounded-md border border-black pl-2 pr-2 w-80">
+                <th className="rounded-md border border-black pl-2 pr-2 w-60">
                   Email
                 </th>
               </tr>

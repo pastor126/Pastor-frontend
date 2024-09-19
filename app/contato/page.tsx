@@ -97,10 +97,9 @@ export default function InserirContatoForm() {
               <input
                 className="peer block w-full rounded-md border border-gray-400 border-2 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="telefone"
-                type="tel"
-                pattern="[0-9]{9}"
+                type="text"
                 name="telefone"
-                placeholder="Apenas números (9 números)"
+                placeholder="Insira seu telefone com DDD"
                 required
                 value={falacomigo.telefone}
                 onChange={handleChange}

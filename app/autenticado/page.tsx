@@ -23,9 +23,17 @@ export default function Page() {
       <div className="text-center max-w-3xl bg-white shadow-md rounded-md">
         <h1 className="text-4xl mb-4 font-serif font-bold text-sky-900">Galeria dos Pastores</h1>
         <p className="text-2xl font-bold mb-6 italic">
-          &quot;De acordo com a tradição, espera-se que o detentor deste título seja amigo, legal, vigilante e, se necessário ... agressivo.&quot;
+          &quot;De acordo com a tradição, espera-se que o detentor deste título seja adestrado, amigo, legal, vigilante e se necessário ... agressivo.&quot;
         </p>
       </div>
+
+      <div className=" max-w-3xl bg-white shadow-md rounded-md mt-4">
+        <h1 className="text-center text-3xl mb-4 font-serif  text-red-600">Avisos</h1>
+        <p className="text-xl  mb-6 px-10">
+          Aqui estarão as notícias links e avisos.
+        </p>
+      </div>
+
     </div>
   );
 }
